@@ -8,7 +8,7 @@ class ReusableHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 12),
+      padding: const EdgeInsets.symmetric(horizontal: 29),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -17,9 +17,17 @@ class ReusableHeader extends StatelessWidget {
             style: TextStyle(color: Colors.white, fontSize: 14),
           ),
 
-          Text(
-            rightText,
-            style: TextStyle(color: Colors.white, fontSize: 14),
+          Row(
+            children: [
+              Text(
+                rightText,
+                style: TextStyle(color: Colors.white, fontSize: 14),
+              ),
+              SizedBox(
+                width: 7,
+              ),
+              Image.asset('assets/body_grid_items/arrow_right.png')
+            ],
           ),
         ],
       ),

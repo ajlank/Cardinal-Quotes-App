@@ -2,7 +2,7 @@ import 'package:cardinal_quotes_app/home/model/body_items_model.dart';
 
 List<BodyItemsModel> bodyItems = [
   BodyItemsModel(id: 1, image: 'assets/body_grid_items/cardinalsounds.png', title: 'Cardinal Sounds'),
-  BodyItemsModel(id: 2, image: 'assets/body_grid_items/wallpaper.png', title: 'Wallpaper'),
+  BodyItemsModel(id: 2, image: 'assets/body_grid_items/wall.png', title: 'Wallpaper'),
   BodyItemsModel(id: 3, image:'assets/body_grid_items/NaturalSounds.png', title: 'Nature Sounds'),
   BodyItemsModel(id: 4, image: 'assets/body_grid_items/SleepingSounds.png', title: 'Sleeping Sounds'),
   BodyItemsModel(id: 5, image:'assets/body_grid_items/Meditation.png', title: 'Meditation'),

@@ -1,4 +1,3 @@
-import 'package:cardinal_quotes_app/main.dart';
 import 'package:cardinal_quotes_app/utils/data/data_drawer_items.dart';
 import 'package:flutter/material.dart';
 
