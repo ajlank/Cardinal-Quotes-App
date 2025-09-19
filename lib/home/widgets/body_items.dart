@@ -1,5 +1,8 @@
+import 'package:cardinal_quotes_app/home/controller/bottom_nav_notifier.dart';
 import 'package:cardinal_quotes_app/home/model/body_items_model.dart';
+import 'package:cardinal_quotes_app/utils/appRoutes/constants/constant.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class BodyItems extends StatelessWidget {
   const BodyItems({super.key, required this.bodyItem});
@@ -9,6 +12,11 @@ class BodyItems extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         print(bodyItem!.id);
+       context.read<BottomNavNotifier>().setId(bodyItem!.id);
+       if(context.read<BottomNavNotifier>().getId==1 ||context.read<BottomNavNotifier>().getId==3 || context.read<BottomNavNotifier>().getId==4){
+         Navigator.of(context).pushNamed(sleepSoundsRoute);
+       }
+      
       },
       child: Padding(
         padding: const EdgeInsets.all(8.0),

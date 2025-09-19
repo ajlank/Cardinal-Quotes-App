@@ -1,15 +1,20 @@
 import 'package:cardinal_quotes_app/home/controller/bottom_nav_notifier.dart';
-import 'package:cardinal_quotes_app/home/model/widgets/body_items.dart';
-import 'package:cardinal_quotes_app/home/model/widgets/item_builder.dart';
-import 'package:cardinal_quotes_app/home/model/widgets/resuable/home/features/announcement.dart';
-import 'package:cardinal_quotes_app/home/model/widgets/resuable/home/features/feature_memorial_cards.dart';
-import 'package:cardinal_quotes_app/home/model/widgets/resuable/home/features/feature_wallpaper.dart';
-import 'package:cardinal_quotes_app/home/model/widgets/resuable/home/features/featured_quotes.dart';
-import 'package:cardinal_quotes_app/home/model/widgets/resuable/home/reusable_header.dart';
+import 'package:cardinal_quotes_app/home/sleepsounds/views/sleep_sounds_view.dart';
+import 'package:cardinal_quotes_app/home/sleepsounds/views/sound_details.dart';
+import 'package:cardinal_quotes_app/home/widgets/body_items.dart';
+import 'package:cardinal_quotes_app/home/widgets/item_builder.dart';
+import 'package:cardinal_quotes_app/home/widgets/resuable/home/features/announcement.dart';
+import 'package:cardinal_quotes_app/home/widgets/resuable/home/features/feature_memorial_cards.dart';
+import 'package:cardinal_quotes_app/home/widgets/resuable/home/features/feature_wallpaper.dart';
+import 'package:cardinal_quotes_app/home/widgets/resuable/home/features/featured_quotes.dart';
+import 'package:cardinal_quotes_app/home/widgets/resuable/home/features/turn_on_feature_quotes.dart';
+import 'package:cardinal_quotes_app/home/widgets/resuable/home/features/turn_on_feature_wallpaper.dart';
+import 'package:cardinal_quotes_app/home/widgets/resuable/home/reusable_header.dart';
+import 'package:cardinal_quotes_app/utils/appRoutes/constants/constant.dart';
 import 'package:cardinal_quotes_app/utils/data/data_app_barr.dart';
 import 'package:cardinal_quotes_app/utils/data/data_body_items.dart';
 import 'package:flutter/material.dart';
-import 'package:cardinal_quotes_app/home/model/widgets/drawerpart.dart';
+import 'package:cardinal_quotes_app/home/widgets/drawerpart.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -31,6 +36,10 @@ class MyApp extends StatelessWidget {
       title: 'Cardinal Quotes',
       theme: ThemeData(),
       home: const HomeView(),
+      routes: {
+        sleepSoundsRoute:(context)=>SleepSoundsView(),
+        soundDetailsRoute:(context)=>SoundDetails()
+      },
     );
   }
 }
@@ -163,11 +172,11 @@ class HomeView extends StatelessWidget {
               rightText: 'See All',
             ),
             SizedBox(height: 10),
-            FeatureWallpaper(),
+           (context.watch<BottomNavNotifier>().turnedOn==true)?TurnOnFeatureWallpaper():FeatureWallpaper(),
             SizedBox(height: 10),
             ReusableHeader(leftText: 'Featured Quotes', rightText: 'See All'),
             SizedBox(height: 10),
-            FeaturedQuotes(),
+             (context.watch<BottomNavNotifier>().turnedOn==true)?TurnOnFeatureQuotes():FeaturedQuotes(),
             SizedBox(height: 10),
             ReusableHeader(
               leftText: 'Featured Memorial Cards',
@@ -178,7 +187,7 @@ class HomeView extends StatelessWidget {
             SizedBox(height: 10),
             ReusableHeader(leftText: 'Announcement', rightText: 'See All'),
             SizedBox(height: 20),
-            Announcement(),
+            Announcement(isTrue: context.watch<BottomNavNotifier>().turnedOn),
             SizedBox(height: 200),
           ],
         ),
@@ -234,9 +243,13 @@ class HomeView extends StatelessWidget {
                     Transform.scale(
                       scale: 0.6, 
                       child: Switch(
+                      
+                        activeTrackColor: Color(0xFF4A3A2A),
                         value: context.watch<BottomNavNotifier>().switchOn,
                         onChanged: (v) {
+                          context.read<BottomNavNotifier>().toggleTurnedOn();
                           context.read<BottomNavNotifier>().toggleSwitch();
+                      
                         },
                       ),
                     ),
