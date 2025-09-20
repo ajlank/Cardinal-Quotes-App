@@ -1,10 +1,10 @@
+import 'package:cardinal_quotes_app/home/quotes/widgets/details_top_quotes.dart';
 import 'package:cardinal_quotes_app/home/sleepsounds/widgets/top_header.dart';
-import 'package:cardinal_quotes_app/home/wallpapers/widgets/details_s.dart';
-import 'package:cardinal_quotes_app/utils/data/data_sleep_sounds.dart';
+import 'package:cardinal_quotes_app/utils/data/data_top_quites.dart';
 import 'package:flutter/material.dart';
 
-class SleepSoundsView extends StatelessWidget {
-  const SleepSoundsView({super.key});
+class TopQuotesView extends StatelessWidget {
+  const TopQuotesView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -20,10 +20,10 @@ class SleepSoundsView extends StatelessWidget {
                 height: 13,
               ),
               Expanded(
-                child: ListView.builder(itemCount: sleepSounds.length,
+                child: ListView.builder(itemCount: topQuotes.length,
                 itemBuilder: (context, i) {
-                  var item=sleepSounds[i];
-                  return DetailsS(item: item,);
+                  var item=topQuotes[i];
+                  return DetailsTopQuotes(item: item);
                 },
                 ),
               ),

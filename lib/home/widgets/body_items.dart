@@ -11,10 +11,15 @@ class BodyItems extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        print(bodyItem!.id);
        context.read<BottomNavNotifier>().setId(bodyItem!.id);
        if(context.read<BottomNavNotifier>().getId==1 ||context.read<BottomNavNotifier>().getId==3 || context.read<BottomNavNotifier>().getId==4){
          Navigator.of(context).pushNamed(sleepSoundsRoute);
+       }else if(context.read<BottomNavNotifier>().getId==2){
+        Navigator.of(context).pushNamed(wallpaperRoute);
+       }else if(context.read<BottomNavNotifier>().getId==5 || context.read<BottomNavNotifier>().getId==6 || context.read<BottomNavNotifier>().getId==8){
+        Navigator.of(context).pushNamed(meditationRoute);
+       }else if(context.read<BottomNavNotifier>().getId==9){
+        Navigator.of(context).pushNamed(topQuotesRoute);
        }
       
       },

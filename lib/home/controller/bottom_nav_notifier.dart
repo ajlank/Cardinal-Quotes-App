@@ -8,7 +8,14 @@ class BottomNavNotifier extends ChangeNotifier{
    bool _switchOn=false;
    bool _isClosed=false;
    bool _turnedOn=false;
+  
+   bool _isClicked=false;
 
+   void setIsClicked(bool f){
+    _isClicked=f;
+    notifyListeners();
+   }
+   bool get isClicked=>_isClicked;
    void setId(int i){
     _id=i;
     notifyListeners();
