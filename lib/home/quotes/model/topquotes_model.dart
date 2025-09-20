@@ -5,12 +5,14 @@ List<TopQuotesModel> sleepSoundsModelFromJson(String str) => List<TopQuotesModel
 String sleepSoundsModelToJson(List<TopQuotesModel> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
 class TopQuotesModel {
+    final int id;
     final String image;
     final String centerText;
     final List<String> tags;
     final String views;
 
     TopQuotesModel({
+         required this.id,
         required this.image,
         required this.centerText,
         required this.tags,
@@ -19,6 +21,7 @@ class TopQuotesModel {
 
     factory TopQuotesModel.fromJson(Map<String, dynamic> json) => TopQuotesModel(
         image: json["image"],
+        id: json["id"],
         centerText: json["centerText"],
         tags: List<String>.from(json["tags"].map((x) => x)),
         views: json["views"],
@@ -29,5 +32,6 @@ class TopQuotesModel {
         "centerText": centerText,
         "tags": List<dynamic>.from(tags.map((x) => x)),
         "views": views,
+        "id":id
     };
 }

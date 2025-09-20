@@ -1,6 +1,8 @@
 import 'package:cardinal_quotes_app/home/controller/bottom_nav_notifier.dart';
 import 'package:cardinal_quotes_app/home/meditation/views/meditation_view.dart';
+import 'package:cardinal_quotes_app/home/notes/views/notes_create_view.dart';
 import 'package:cardinal_quotes_app/home/quotes/views/top_quotes_view.dart';
+import 'package:cardinal_quotes_app/home/sacredJournals/views/sacred_journals.dart';
 import 'package:cardinal_quotes_app/home/sleepsounds/views/sleep_sounds_view.dart';
 import 'package:cardinal_quotes_app/home/sleepsounds/views/sound_details.dart';
 import 'package:cardinal_quotes_app/home/wallpapers/wallpaper_view.dart';
@@ -44,7 +46,9 @@ class MyApp extends StatelessWidget {
         soundDetailsRoute: (context) => SoundDetails(),
         wallpaperRoute: (context) => WallPaperView(),
         meditationRoute:(context)=>MeditationView(),
-        topQuotesRoute:(context)=>TopQuotesView()
+        topQuotesRoute:(context)=>TopQuotesView(),
+        sacredJournalsRoute:(context)=>SacredJournals(),
+        noteCreateRoute:(context)=>NotesCreateView()
       },
     );
   }
@@ -141,25 +145,28 @@ class HomeView extends StatelessWidget {
             ),
             toolbarHeight: 80,
             centerTitle: false,
-            title: LayoutBuilder(
-              builder: (context, constraints) {
-                return SizedBox(
-                  height: 40,
-                  width: constraints.maxWidth,
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                    child: ListView.builder(
-                      scrollDirection: Axis.horizontal,
-                      physics: const BouncingScrollPhysics(),
-                      itemCount: appBarItems.length,
-                      itemBuilder: (context, index) {
-                        final item = appBarItems[index];
-                        return ItemBuilder(items: item);
-                      },
+            title: Hero(
+              tag: 'top101',
+              child: LayoutBuilder(
+                builder: (context, constraints) {
+                  return SizedBox(
+                    height: 40,
+                    width: constraints.maxWidth,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                      child: ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        physics: const BouncingScrollPhysics(),
+                        itemCount: appBarItems.length,
+                        itemBuilder: (context, index) {
+                          final item = appBarItems[index];
+                          return ItemBuilder(items: item);
+                        },
+                      ),
                     ),
-                  ),
-                );
-              },
+                  );
+                },
+              ),
             ),
           ),
 
@@ -177,7 +184,15 @@ class HomeView extends StatelessWidget {
                     physics: const NeverScrollableScrollPhysics(),
                     children: List.generate(bodyItems.length, (index) {
                       var bodyItem = bodyItems[index];
-                      return BodyItems(bodyItem: bodyItem);
+                       if(bodyItem.id==15){
+                         return Hero(
+                          tag: 'hey101',
+                          child: BodyItems(bodyItem: bodyItem));
+                       }
+                       else{
+                         return BodyItems(bodyItem: bodyItem);
+                       }
+                     
                     }),
                   ),
                 ),

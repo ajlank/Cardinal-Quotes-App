@@ -65,6 +65,7 @@ flutter:
     - assets/drawer_items/top/
     - assets/appbar_items_slide/
     - assets/body_grid_items/
+    - assets/body_grid_items/items/
     - assets/feature_wallpaper/
     - assets/cardinal_quotes_img/
     - assets/feature_memorial_cards/

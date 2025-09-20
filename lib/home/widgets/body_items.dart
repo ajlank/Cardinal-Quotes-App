@@ -1,5 +1,6 @@
 import 'package:cardinal_quotes_app/home/controller/bottom_nav_notifier.dart';
 import 'package:cardinal_quotes_app/home/model/body_items_model.dart';
+import 'package:cardinal_quotes_app/home/quotes/views/top_quotes_view.dart';
 import 'package:cardinal_quotes_app/utils/appRoutes/constants/constant.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -19,7 +20,19 @@ class BodyItems extends StatelessWidget {
        }else if(context.read<BottomNavNotifier>().getId==5 || context.read<BottomNavNotifier>().getId==6 || context.read<BottomNavNotifier>().getId==8){
         Navigator.of(context).pushNamed(meditationRoute);
        }else if(context.read<BottomNavNotifier>().getId==9){
-        Navigator.of(context).pushNamed(topQuotesRoute);
+       Navigator.of(context).push(PageRouteBuilder(
+        transitionDuration: const Duration(milliseconds: 800),
+        reverseTransitionDuration: const Duration(milliseconds: 800),
+        pageBuilder: (_, __, ___) => const TopQuotesView(),
+      ));
+       }else if(context.read<BottomNavNotifier>().getId==11){
+      //  Navigator.of(context).push(PageRouteBuilder(
+      //   transitionDuration: const Duration(milliseconds: 800),
+      //   reverseTransitionDuration: const Duration(milliseconds: 800),
+      //   pageBuilder: (_, __, ___) => const SacredJournals(),
+      // ));
+
+      Navigator.of(context).pushNamed(sacredJournalsRoute);
        }
       
       },
