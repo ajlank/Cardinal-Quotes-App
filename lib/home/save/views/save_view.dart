@@ -3,50 +3,23 @@ import 'package:provider/provider.dart';
 import 'package:cardinal_quotes_app/home/save/widgets/top_save_header.dart';
 import 'package:cardinal_quotes_app/home/controller/bottom_nav_notifier.dart';
 
-class SaveView extends StatefulWidget {
+class SaveView extends StatelessWidget {
   const SaveView({super.key});
-
-  @override
-  State<SaveView> createState() => _SaveViewState();
-}
-
-class _SaveViewState extends State<SaveView> {
   final List<String> tabs = const [
     "Audios",
     "Quotes",
     "Wallpaper",
-    "Memorial Cards"
+    "Memorial Cards",
   ];
-
   final List<String> tabIcons = const [
     'assets/save_items/Audio.png',
     'assets/body_grid_items/top_quotes.png',
     'assets/save_items/wallpaper.png',
     'assets/save_items/memorial_icon.png',
   ];
-
-  bool showAnimatedTags = false;
-  double tagsLeft = 12;
-
   @override
   Widget build(BuildContext context) {
     final bottomNav = context.watch<BottomNavNotifier>();
-
-    // Detect when switching to Memorial tab (index 3) to animate tags
-    if (bottomNav.selectedTabIndex == 3 && !showAnimatedTags) {
-      Future.delayed(Duration.zero, () {
-        setState(() {
-          showAnimatedTags = true;
-          tagsLeft = 200; // Move tags to Memorial tab position
-        });
-      });
-    } else if (bottomNav.selectedTabIndex != 3 && showAnimatedTags) {
-      setState(() {
-        showAnimatedTags = false;
-        tagsLeft = 12; // Reset tags position
-      });
-    }
-
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 181, 25, 14),
       body: SafeArea(
@@ -56,8 +29,6 @@ class _SaveViewState extends State<SaveView> {
             children: [
               Row(children: [TopSaveHeader()]),
               const SizedBox(height: 20),
-
-              // Tabs Row
               SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: Row(
@@ -79,8 +50,7 @@ class _SaveViewState extends State<SaveView> {
                                 ? const Color.fromARGB(255, 241, 233, 172)
                                 : Colors.transparent,
                             borderRadius: BorderRadius.circular(25),
-                            border:
-                                Border.all(color: Colors.white, width: 1.5),
+                            border: Border.all(color: Colors.white, width: 1.5),
                           ),
                           child: Row(
                             mainAxisSize: MainAxisSize.min,
@@ -111,50 +81,18 @@ class _SaveViewState extends State<SaveView> {
                   }),
                 ),
               ),
-
               const SizedBox(height: 15),
-
               Expanded(
                 child: Stack(
                   children: [
                     IndexedStack(
                       index: bottomNav.selectedTabIndex,
                       children: [
-                        _audioContent(),
-                        _quoteContent(),
+                        _audioContent(context),
+                        _quoteContent(context),
                         _wallpaperContent(),
                         _memorialContent(),
                       ],
-                    ),
-
-                    // Animated tags positioned above the content
-                    AnimatedPositioned(
-                      duration: const Duration(milliseconds: 500),
-                      top: 50,
-                      left: tagsLeft,
-                      child: AnimatedOpacity(
-                        duration: const Duration(milliseconds: 500),
-                        opacity: showAnimatedTags ? 1 : 0,
-                        child: Row(
-                          children: const [
-                            Padding(
-                              padding: EdgeInsets.only(right: 10),
-                              child: Text('#Ambition',
-                                  style: TextStyle(color: Colors.white)),
-                            ),
-                            Padding(
-                              padding: EdgeInsets.only(right: 10),
-                              child: Text('#Inspiration',
-                                  style: TextStyle(color: Colors.white)),
-                            ),
-                            Padding(
-                              padding: EdgeInsets.only(right: 10),
-                              child: Text('#Motivational',
-                                  style: TextStyle(color: Colors.white)),
-                            ),
-                          ],
-                        ),
-                      ),
                     ),
                   ],
                 ),
@@ -166,36 +104,79 @@ class _SaveViewState extends State<SaveView> {
     );
   }
 
-  Widget _audioContent() {
-    return SingleChildScrollView(
-      child: Column(
-        children: [
-          ClipRRect(
-            borderRadius: BorderRadius.circular(12),
-            child: Image.asset('assets/sleep_sounds/music1.png'),
-          ),
-          const SizedBox(height: 12),
-          Row(
-            children: const [
-              Text('Music: Wiper',
-                  style: TextStyle(color: Colors.white, fontWeight: FontWeight.w500)),
-            ],
-          ),
-          const SizedBox(height: 6),
-          Row(
-            children: [
-              _actionItem('assets/sleep_sounds/eye.png', '577777k'),
-              _actionItem('assets/sleep_sounds/share.png', 'Share'),
-              _actionItem('assets/sleep_sounds/download.png', 'Download'),
-              _actionItem('assets/sleep_sounds/save.png', 'Save'),
-            ],
-          ),
-        ],
-      ),
-    );
-  }
+Widget _audioContent(BuildContext context) {
+  final bottomNav = Provider.of<BottomNavNotifier>(context, listen: true);
+  final screenWidth = MediaQuery.of(context).size.width;
 
-  Widget _quoteContent() {
+  return SingleChildScrollView(
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+     
+        ClipRRect(
+          borderRadius: BorderRadius.circular(12),
+          child: Image.asset('assets/sleep_sounds/music1.png'),
+        ),
+        const SizedBox(height: 12),
+
+        const Text(
+          'Music: Wiper',
+          style: TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.w500,
+          ),
+        ),
+        const SizedBox(height: 6),
+        TweenAnimationBuilder<Offset>(
+          tween: Tween<Offset>(
+            begin: Offset(0, 0), 
+            end: bottomNav.selectedTabIndex == 0? Offset(0, 0) : Offset(300, -300),
+          ),
+          duration: const Duration(milliseconds: 500),
+          curve: Curves.easeInOut,
+          builder: (context, offset, child) {
+            return Transform.translate(
+              offset: offset,
+              child: Opacity(
+                opacity: bottomNav.selectedTabIndex == 1 ? 0 : 1,
+                child: Row(
+                  children: const [
+                    Padding(
+                      padding: EdgeInsets.only(right: 10),
+                      child: Text('#Ambition', style: TextStyle(color: Colors.white)),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(right: 10),
+                      child: Text('#Inspiration', style: TextStyle(color: Colors.white)),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(right: 10),
+                      child: Text('#Motivational', style: TextStyle(color: Colors.white)),
+                    ),
+                  ],
+                ),
+              ),
+            );
+          },
+        ),
+        const SizedBox(height: 5),
+
+        Row(
+          children: [
+            _actionItem('assets/sleep_sounds/eye.png', '577777k'),
+            _actionItem('assets/sleep_sounds/share.png', 'Share'),
+            _actionItem('assets/sleep_sounds/download.png', 'Download'),
+            _actionItem('assets/sleep_sounds/save.png', 'Save'),
+          ],
+        ),
+      ],
+    ),
+  );
+}
+
+
+  Widget _quoteContent(BuildContext context) {
+    final bottomNav = Provider.of<BottomNavNotifier>(context, listen: true);
     return SingleChildScrollView(
       child: Column(
         children: [
@@ -209,6 +190,28 @@ class _SaveViewState extends State<SaveView> {
           ),
           const SizedBox(height: 12),
           const SizedBox(height: 6),
+          Row(
+            children: const [
+              Padding(
+                padding: EdgeInsets.only(right: 10),
+                child: Text('#Ambition', style: TextStyle(color: Colors.white)),
+              ),
+              Padding(
+                padding: EdgeInsets.only(right: 10),
+                child: Text(
+                  '#Inspiration',
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.only(right: 10),
+                child: Text(
+                  '#Motivational',
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
+            ],
+          ),
           Row(
             children: [
               _actionItem('assets/sleep_sounds/eye.png', '577777k'),

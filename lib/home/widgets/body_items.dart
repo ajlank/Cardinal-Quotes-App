@@ -20,7 +20,7 @@ class BodyItems extends StatelessWidget {
         Navigator.of(context).pushNamed(wallpaperRoute);
        }else if(context.read<BottomNavNotifier>().getId==5 || context.read<BottomNavNotifier>().getId==6 || context.read<BottomNavNotifier>().getId==8){
         Navigator.of(context).pushNamed(meditationRoute);
-       }else if(context.read<BottomNavNotifier>().getId==9 || context.read<BottomNavNotifier>().getId==13){
+       }else if(context.read<BottomNavNotifier>().getId==9){
        Navigator.of(context).push(PageRouteBuilder(
         transitionDuration: const Duration(milliseconds: 800),
         reverseTransitionDuration: const Duration(milliseconds: 800),
@@ -45,6 +45,10 @@ class BodyItems extends StatelessWidget {
       ));
        }else if(context.read<BottomNavNotifier>().getId==14){
             Navigator.of(context).pushNamed(saveRoute);
+       }else if(context.read<BottomNavNotifier>().getId==13){
+        Navigator.of(context).pushNamed(memorialRoute);
+       }else if(context.read<BottomNavNotifier>().getId==15){
+        Navigator.of(context).pushNamed(saveRoute);
        }
       
       },

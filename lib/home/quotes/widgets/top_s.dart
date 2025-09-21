@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class MemorialTop extends StatelessWidget {
-  const MemorialTop({super.key});
+class TopS extends StatelessWidget {
+  const TopS({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +13,7 @@ class MemorialTop extends StatelessWidget {
         ),
         const SizedBox(width: 7),
         const Text(
-          'Memorial Card',
+          'Soul Check-In',
           style: TextStyle(color: Colors.white, fontWeight: FontWeight.w400),
         ),
       ],

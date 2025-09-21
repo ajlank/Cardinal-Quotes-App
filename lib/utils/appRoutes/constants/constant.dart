@@ -10,3 +10,5 @@ const String soulCheckInRoute='/soulCheckin';
 const String todosRoute='/todos';
 const String createTodosRoute='/createTodos';
 const String saveRoute='/saveView';
+const String memorialRoute='/memorial';
+const String scRoute='/soulCheckIn';
