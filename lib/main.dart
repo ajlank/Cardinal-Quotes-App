@@ -1,10 +1,14 @@
 import 'package:cardinal_quotes_app/home/controller/bottom_nav_notifier.dart';
+import 'package:cardinal_quotes_app/home/medicinenotes/views/to_dos.dart';
 import 'package:cardinal_quotes_app/home/meditation/views/meditation_view.dart';
 import 'package:cardinal_quotes_app/home/notes/views/notes_create_view.dart';
 import 'package:cardinal_quotes_app/home/quotes/views/top_quotes_view.dart';
 import 'package:cardinal_quotes_app/home/sacredJournals/views/sacred_journals.dart';
+import 'package:cardinal_quotes_app/home/save/views/save_view.dart';
 import 'package:cardinal_quotes_app/home/sleepsounds/views/sleep_sounds_view.dart';
 import 'package:cardinal_quotes_app/home/sleepsounds/views/sound_details.dart';
+import 'package:cardinal_quotes_app/home/soulcheckin/views/soul_checkin_view.dart';
+import 'package:cardinal_quotes_app/home/medicinenotes/views/create_todos.dart';
 import 'package:cardinal_quotes_app/home/wallpapers/wallpaper_view.dart';
 import 'package:cardinal_quotes_app/home/widgets/body_items.dart';
 import 'package:cardinal_quotes_app/home/widgets/item_builder.dart';
@@ -48,7 +52,11 @@ class MyApp extends StatelessWidget {
         meditationRoute:(context)=>MeditationView(),
         topQuotesRoute:(context)=>TopQuotesView(),
         sacredJournalsRoute:(context)=>SacredJournals(),
-        noteCreateRoute:(context)=>NotesCreateView()
+        noteCreateRoute:(context)=>NotesCreateView(),
+        soulCheckInRoute:(context)=>SoulCheckinView(),
+        todosRoute:(context)=>ToDos(),
+        createTodosRoute:(context)=>CreateTodos(),
+        saveRoute:(context)=>SaveView()
       },
     );
   }

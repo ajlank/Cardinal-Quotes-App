@@ -80,6 +80,7 @@ flutter:
     - assets/Wallpaper/right/
     - assets/Wallpaper/turnOn/
     - assets/top_quotes/
+    - assets/save_items/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

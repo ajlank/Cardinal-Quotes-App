@@ -6,3 +6,7 @@ const String meditationRoute='/meditation';
 const String topQuotesRoute='/topQuotes';
 const String sacredJournalsRoute='/sacredJournalR';
 const String noteCreateRoute='/noteCreate';
+const String soulCheckInRoute='/soulCheckin';
+const String todosRoute='/todos';
+const String createTodosRoute='/createTodos';
+const String saveRoute='/saveView';

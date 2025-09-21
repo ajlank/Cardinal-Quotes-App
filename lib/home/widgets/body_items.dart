@@ -1,4 +1,5 @@
 import 'package:cardinal_quotes_app/home/controller/bottom_nav_notifier.dart';
+import 'package:cardinal_quotes_app/home/medicinenotes/views/to_dos.dart';
 import 'package:cardinal_quotes_app/home/model/body_items_model.dart';
 import 'package:cardinal_quotes_app/home/quotes/views/top_quotes_view.dart';
 import 'package:cardinal_quotes_app/utils/appRoutes/constants/constant.dart';
@@ -19,7 +20,7 @@ class BodyItems extends StatelessWidget {
         Navigator.of(context).pushNamed(wallpaperRoute);
        }else if(context.read<BottomNavNotifier>().getId==5 || context.read<BottomNavNotifier>().getId==6 || context.read<BottomNavNotifier>().getId==8){
         Navigator.of(context).pushNamed(meditationRoute);
-       }else if(context.read<BottomNavNotifier>().getId==9){
+       }else if(context.read<BottomNavNotifier>().getId==9 || context.read<BottomNavNotifier>().getId==13){
        Navigator.of(context).push(PageRouteBuilder(
         transitionDuration: const Duration(milliseconds: 800),
         reverseTransitionDuration: const Duration(milliseconds: 800),
@@ -33,6 +34,17 @@ class BodyItems extends StatelessWidget {
       // ));
 
       Navigator.of(context).pushNamed(sacredJournalsRoute);
+
+       }else if(context.read<BottomNavNotifier>().getId==10){
+        Navigator.of(context).pushNamed(soulCheckInRoute);
+       }else if(context.read<BottomNavNotifier>().getId==12){
+         Navigator.of(context).push(PageRouteBuilder(
+        transitionDuration: const Duration(milliseconds: 800),
+        reverseTransitionDuration: const Duration(milliseconds: 800),
+        pageBuilder: (_, __, ___) => const ToDos(),
+      ));
+       }else if(context.read<BottomNavNotifier>().getId==14){
+            Navigator.of(context).pushNamed(saveRoute);
        }
       
       },

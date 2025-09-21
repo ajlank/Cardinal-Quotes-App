@@ -20,13 +20,28 @@ class NotesCreateView extends StatelessWidget {
                 color: Colors.brown,
               ),
               height: 60,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Image.asset('assets/body_grid_items/items/1.png'),
-                  Image.asset('assets/body_grid_items/items/2.png'),
-                  Image.asset('assets/body_grid_items/items/3.png'),
-                  Image.asset('assets/body_grid_items/items/4.png'),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Image.asset('assets/body_grid_items/items/1.png'),
+                      Image.asset('assets/body_grid_items/items/2.png'),
+                      Image.asset('assets/body_grid_items/items/3.png'),
+                      Image.asset('assets/body_grid_items/items/4.png'),
+                      
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left: 100),
+                        child: Text('Edited 11 may 2025 11:41 pm',style: TextStyle(color: Colors.white,fontSize: 12,fontWeight: FontWeight.w500),),
+                      )
+                    ],
+                  )
                 ],
               ),
             ),
@@ -62,7 +77,7 @@ class NotesCreateView extends StatelessWidget {
                     children: const [
                       Text('Title',
                           style: TextStyle(
-                              fontSize: 18, fontWeight: FontWeight.bold)),
+                              fontSize: 18, fontWeight: FontWeight.bold,color: Colors.brown)),
                       Text('Note',
                           style: TextStyle(
                               fontSize: 14, color: Colors.grey)),
