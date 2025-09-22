@@ -1,8 +1,11 @@
 // details_s.dart
 import 'package:cardinal_quotes_app/home/rest_api_all_sounds/model/sounds_model.dart';
+import 'package:cardinal_quotes_app/home/save_backends/controller/post_save_controller.dart';
+import 'package:cardinal_quotes_app/home/sleepsounds/model/sleep_sounds_model.dart';
 import 'package:cardinal_quotes_app/home/wallpapers/widgets/icon_with_text.dart';
 import 'package:cardinal_quotes_app/utils/appRoutes/constants/constant.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class DetailsS extends StatelessWidget {
   const DetailsS({super.key, required this.item});
@@ -54,7 +57,12 @@ class DetailsS extends StatelessWidget {
                         const SizedBox(width: 12),
                          IconWithText(asset:'assets/sleep_sounds/download.png',text:'Download'),
                         const SizedBox(width: 12),
-                         IconWithText(asset:'assets/sleep_sounds/save.png',text:'Save'),
+                         GestureDetector(
+                          onTap: () {
+                            
+                            context.read<PostSaveController>().savePost("audio", item!.id);
+                          },
+                          child: IconWithText(asset:'assets/sleep_sounds/save.png',text:'Save')),
                        
                       ],
                     ),

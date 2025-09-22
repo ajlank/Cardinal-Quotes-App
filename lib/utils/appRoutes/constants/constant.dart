@@ -12,3 +12,6 @@ const String createTodosRoute='/createTodos';
 const String saveRoute='/saveView';
 const String memorialRoute='/memorial';
 const String scRoute='/soulCheckIn';
+const String signUpRoute='/signUp';
+const String loginRoute='/login';
+const String homeRoute='/homes';

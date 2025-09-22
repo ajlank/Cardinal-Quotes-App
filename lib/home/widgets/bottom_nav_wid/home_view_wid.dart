@@ -1,3 +1,4 @@
+import 'package:cardinal_quotes_app/auth/views/authentication_view.dart';
 import 'package:cardinal_quotes_app/home/controller/bottom_nav_notifier.dart';
 import 'package:cardinal_quotes_app/home/widgets/body_items.dart';
 import 'package:cardinal_quotes_app/home/widgets/drawerpart.dart';
@@ -12,6 +13,7 @@ import 'package:cardinal_quotes_app/utils/appRoutes/constants/constant.dart';
 import 'package:cardinal_quotes_app/utils/data/data_app_barr.dart';
 import 'package:cardinal_quotes_app/utils/data/data_body_items.dart';
 import 'package:flutter/material.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:provider/provider.dart';
 
 class HomeViewWid extends StatelessWidget {
@@ -19,6 +21,10 @@ class HomeViewWid extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+   String? accessToken=GetStorage().read('accessToken');
+     if(accessToken==null){
+      return AuthenticationView();
+     }
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 181, 25, 14),
       drawer: Drawerpart(),

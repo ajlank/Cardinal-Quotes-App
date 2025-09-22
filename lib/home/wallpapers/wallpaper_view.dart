@@ -1,6 +1,5 @@
 import 'package:cardinal_quotes_app/home/controller/bottom_nav_notifier.dart';
 import 'package:cardinal_quotes_app/home/rest_api_all_visuals/hooks/fetch/fetch_wallpaper_by_category.dart';
-import 'package:cardinal_quotes_app/home/wallpapers/widgets/item_pannel.dart';
 import 'package:cardinal_quotes_app/home/wallpapers/widgets/mid_part.dart';
 import 'package:cardinal_quotes_app/home/wallpapers/widgets/top_part.dart';
 import 'package:flutter/material.dart';

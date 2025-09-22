@@ -1,9 +1,11 @@
+import 'package:cardinal_quotes_app/auth/views/authentication_view.dart';
 import 'package:cardinal_quotes_app/home/controller/bottom_nav_notifier.dart';
 import 'package:cardinal_quotes_app/home/quotes/widgets/details_top_quotes.dart';
 import 'package:cardinal_quotes_app/home/rest_api_all_quotes/hooks/fetch/fetch_quotes_by_category.dart';
 import 'package:cardinal_quotes_app/home/sleepsounds/widgets/top_header.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:provider/provider.dart';
 
 class QuotesView extends HookWidget {
@@ -11,6 +13,10 @@ class QuotesView extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
+    String? accessToken=GetStorage().read('accessToken');
+     if(accessToken==null){
+      return AuthenticationView();
+     }
     final result = fetchQuotesByCategory(
       context.read<BottomNavNotifier>().getQuotesCategory,
     );

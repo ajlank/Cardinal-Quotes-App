@@ -1,5 +1,7 @@
+import 'package:cardinal_quotes_app/utils/appRoutes/constants/constant.dart';
 import 'package:cardinal_quotes_app/utils/data/data_drawer_items.dart';
 import 'package:flutter/material.dart';
+import 'package:get_storage/get_storage.dart';
 
 class Drawerpart extends StatelessWidget {
   const Drawerpart({super.key});
@@ -88,11 +90,15 @@ class Drawerpart extends StatelessWidget {
               
                   const SizedBox(height: 20),
               
-                  // Logout Row
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Text('Log Out'),
+                      GestureDetector(
+                        onTap: () {
+                          GetStorage().remove('accessToken');
+                          Navigator.of(context).pushNamedAndRemoveUntil(signUpRoute, (_)=>false);
+                        },
+                        child: const Text('Log Out')),
                       const SizedBox(width: 10),
                       Image.asset('assets/drawer_items/bottom/log_out.png'),
                     ],

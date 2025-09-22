@@ -40,6 +40,7 @@ dependencies:
   http: ^1.5.0
   flutter_hooks: ^0.21.3+1
   flutter_dotenv: ^6.0.0
+  get_storage: ^2.1.1
 
 dev_dependencies:
   flutter_test:
@@ -85,6 +86,7 @@ flutter:
     - assets/Wallpaper/turnOn/
     - assets/top_quotes/
     - assets/save_items/
+    - assets/auth_files/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

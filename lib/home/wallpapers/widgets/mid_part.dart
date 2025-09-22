@@ -92,7 +92,7 @@ class MidPart extends HookWidget {
                 Positioned(
                   right: 0,
                   top: 0,
-                  child: ItemPannel(viewCount: item.viewCount,),
+                  child: ItemPannel(viewCount: item.viewCount, id: item.id,),
                 ),
             ],
           );

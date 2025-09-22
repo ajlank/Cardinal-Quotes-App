@@ -1,6 +1,8 @@
 import 'package:cardinal_quotes_app/home/rest_api_all_quotes/model/quotes_model.dart';
 import 'package:cardinal_quotes_app/home/rest_api_all_visuals/model/wallpaper_model.dart';
+import 'package:cardinal_quotes_app/home/save_backends/controller/post_save_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class DetailsVisuals extends StatelessWidget {
   const DetailsVisuals({super.key, required this.item});
@@ -35,7 +37,7 @@ class DetailsVisuals extends StatelessWidget {
                 SizedBox(height: 4),
                 Row(
                   children: List.generate(item.keywords.length, (i) {
-                    var tag = item!.keywords[i];
+                    var tag = item.keywords[i];
                     return Padding(
                       padding: const EdgeInsets.only(right: 10),
                       child: Text(
@@ -104,15 +106,20 @@ class DetailsVisuals extends StatelessWidget {
                       padding: const EdgeInsets.only(right: 12),
                       child: Column(
                         children: [
-                          Row(
-                            children: [
-                              Image.asset('assets/sleep_sounds/save.png'),
-                              SizedBox(width: 3),
-                              Text(
-                                'Save',
-                                style: TextStyle(color: Colors.white),
-                              ),
-                            ],
+                          GestureDetector(
+                            onTap: () {
+                              context.read<PostSaveController>().savePost('visual', item.id);
+                            },
+                            child: Row(
+                              children: [
+                                Image.asset('assets/sleep_sounds/save.png'),
+                                SizedBox(width: 3),
+                                Text(
+                                  'Save',
+                                  style: TextStyle(color: Colors.white),
+                                ),
+                              ],
+                            ),
                           ),
                         ],
                       ),

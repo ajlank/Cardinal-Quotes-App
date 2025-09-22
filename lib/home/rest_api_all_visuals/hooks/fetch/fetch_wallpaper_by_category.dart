@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'package:cardinal_quotes_app/home/model/wallpaper_model.dart';
 import 'package:cardinal_quotes_app/home/rest_api_all_visuals/hooks/result/fetch_wallpaper_results.dart';
 import 'package:cardinal_quotes_app/home/rest_api_all_visuals/model/wallpaper_model.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';

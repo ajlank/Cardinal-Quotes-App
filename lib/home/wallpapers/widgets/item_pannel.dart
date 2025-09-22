@@ -1,10 +1,12 @@
 import 'package:cardinal_quotes_app/home/controller/bottom_nav_notifier.dart';
+import 'package:cardinal_quotes_app/home/save_backends/controller/post_save_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class ItemPannel extends StatelessWidget {
-  const ItemPannel({super.key, required this.viewCount});
+  const ItemPannel({super.key, required this.viewCount, required this.id});
   final int viewCount;
+  final int id;
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -60,12 +62,17 @@ class ItemPannel extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Image.asset(
-                      'assets/sleep_sounds/save.png',
-                      width: 20,
-                      height: 20,
-                      color: Color(0xFF4A3A2A),
-                      colorBlendMode: BlendMode.srcIn,
+                    GestureDetector(
+                      onTap: () {
+                        context.read<PostSaveController>().savePost('visual', id);
+                      },
+                      child: Image.asset(
+                        'assets/sleep_sounds/save.png',
+                        width: 20,
+                        height: 20,
+                        color: Color(0xFF4A3A2A),
+                        colorBlendMode: BlendMode.srcIn,
+                      ),
                     ),
                     const SizedBox(width: 11),
                     const Text('Save'),

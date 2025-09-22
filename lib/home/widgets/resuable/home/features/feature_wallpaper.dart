@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:cardinal_quotes_app/home/featured_cards/hooks/fetch/fetch_featureds_cards.dart';
 import 'package:cardinal_quotes_app/home/featured_cards/model/featureds_model.dart'; // Replace with your actual model import
-import 'package:provider/provider.dart';
 
 class FeatureWallpaper extends HookWidget {
   const FeatureWallpaper({super.key});
