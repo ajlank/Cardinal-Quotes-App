@@ -7,114 +7,102 @@ class Drawerpart extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-        padding: const EdgeInsets.symmetric(vertical: 12,horizontal: 12),
-        child: Drawer(
-          width: 258,
-          backgroundColor: const Color(0xFFF5E6CC),
-          child: ListView(
-            padding: const EdgeInsets.all(0),
-            children: [
-              SizedBox(
-                height: 7,
-              ),
-              SizedBox(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
+      padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 12),
+      child: Drawer(
+        width: 258,
+        backgroundColor: const Color(0xFFF5E6CC),
+        child: Column(
+          children: [
+             Stack(
+              children: [
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: const [
+                      Text(
+                        "''Peace comes from within.\n   Do not seek it without''",
+                        style: TextStyle(
+                          fontSize: 14,
+                          color: Color(0xFF4A3A2A),
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                      SizedBox(height: 3),
+                      Text(
+                        "Buddha",
+                        style: TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.bold,
+                          color: Color(0xFF4A3A2A),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Row(
                   children: [
-                    SizedBox(
-                      height: 25,
-                    ),
-                   GestureDetector(
-                    onTap: () {
                     
-                      Navigator.pop(context); 
-                    },
-                     child: Container(
-                       
-                        child: Image.asset('assets/drawer_items/top/Cancel.png')),
-                   ),
-                    SizedBox(width: 12,)
-                  ],
-                )),
-              Stack(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 30,vertical: 10),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                      const Text(
-                      "''Peace comes from within.\n   Do not seek it without''",
-                      style: TextStyle(
-                        fontSize: 14,
-                        color: Color(0xFF4A3A2A), // warm dark brown
-                        fontWeight: FontWeight.w500
-                      ),
-                    ),
-                    SizedBox(
-                      height: 3,
-                    ),
-                    const Text(
-                      "Buddha",
-                      style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.bold,
-                        color: Color(0xFF4A3A2A), // same brown for consistency
-                      ),
-                    ),
-                    ],),
-                  ),
-                  SizedBox(
-                    height: 34,
-                  ),
-                  Row(
-                      
-                    children: [
-                      SizedBox(
-                        width: 2,
-                      ),
+                    const SizedBox(width: 2),
                     Image.asset('assets/drawer_items/top/left_bird.png'),
-                   SizedBox(
-                    width: 20,
-                    
-                   ),
-                      
+                    const SizedBox(width: 20),
                     Padding(
                       padding: const EdgeInsets.only(top: 20),
-                      child: Container(
-                        child: Image.asset('assets/drawer_items/top/right_bird.png')),
+                      child: Image.asset('assets/drawer_items/top/right_bird.png'),
                     )
-                  ],)
+                  ],
+                ),
+                 Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      const SizedBox(height: 25),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.pop(context);
+                        },
+                        child: Image.asset('assets/drawer_items/top/Cancel.png'),
+                      ),
+                      const SizedBox(width: 12),
+                    ],
+                  ),
+              ],
+            ),
+            Expanded(
+              child: ListView(
+                padding: const EdgeInsets.all(0),
+                children: [
+                  const SizedBox(height: 7),
+                 
+    
+                  ...List.generate(drawerItems.length, (i) {
+                    var item = drawerItems[i];
+                    return ListTile(
+                      leading: Image(image: AssetImage(item.image)),
+                      title: Text(
+                        item.title,
+                        style: const TextStyle(color: Color(0xFF4A3A2A)),
+                      ),
+                    );
+                  }),
+              
+                  const SizedBox(height: 20),
+              
+                  // Logout Row
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Text('Log Out'),
+                      const SizedBox(width: 10),
+                      Image.asset('assets/drawer_items/bottom/log_out.png'),
+                    ],
+                  ),
                 ],
               ),
-
-             
-             SizedBox(
-              height: 600,
-               child: SingleChildScrollView(
-                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children:List.generate(drawerItems.length, (i){
-                  var item=drawerItems[i];
-                  return ListTile(
-                    leading:Image(image: AssetImage(item.image)),
-                    title: Text(item.title,style: TextStyle(color:Color(0xFF4A3A2A)),),
-                   
-                  );
-                 }),),
-               ),
-             ),
-             Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text('Log Out'),
-                SizedBox(width: 10,),
-                Image.asset('assets/drawer_items/bottom/log_out.png')
-              ],
-             )
-            ],
-          ),
+            ),
+          ],
         ),
-      );
+      ),
+    );
   }
 }

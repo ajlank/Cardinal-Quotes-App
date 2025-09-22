@@ -21,6 +21,7 @@ class BodyItems extends StatelessWidget {
          Navigator.of(context).pushNamed(allSoundsRoute);
          
        }else if(context.read<BottomNavNotifier>().getId==2){
+         context.read<BottomNavNotifier>().setVisualCategoryAndTitle(bodyItem!.category,bodyItem!.title);
         Navigator.of(context).pushNamed(wallpaperRoute);
        }else if(context.read<BottomNavNotifier>().getId==5 || context.read<BottomNavNotifier>().getId==6 || context.read<BottomNavNotifier>().getId==8){
         Navigator.of(context).pushNamed(meditationRoute);
@@ -46,6 +47,7 @@ class BodyItems extends StatelessWidget {
        }else if(context.read<BottomNavNotifier>().getId==14){
             Navigator.of(context).pushNamed(saveRoute);
        }else if(context.read<BottomNavNotifier>().getId==13){
+        context.read<BottomNavNotifier>().setVisualCategoryAndTitle(bodyItem!.category,bodyItem!.title);
         Navigator.of(context).pushNamed(memorialRoute);
        }else if(context.read<BottomNavNotifier>().getId==15){
         Navigator.of(context).pushNamed(saveRoute);

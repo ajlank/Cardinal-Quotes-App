@@ -1,9 +1,7 @@
 import 'package:cardinal_quotes_app/home/controller/bottom_nav_notifier.dart';
 import 'package:cardinal_quotes_app/home/quotes/widgets/details_top_quotes.dart';
-import 'package:cardinal_quotes_app/home/quotes/widgets/top.dart';
 import 'package:cardinal_quotes_app/home/rest_api_all_quotes/hooks/fetch/fetch_quotes_by_category.dart';
 import 'package:cardinal_quotes_app/home/sleepsounds/widgets/top_header.dart';
-import 'package:cardinal_quotes_app/utils/data/data_top_quites.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:provider/provider.dart';

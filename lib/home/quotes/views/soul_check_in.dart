@@ -24,6 +24,7 @@ class SoulCheckIn extends StatelessWidget {
                 itemBuilder: (context, i) {
                   
                   var item=topQuotes[i];
+                  return null;
                   
                   //  return DetailsTopQuotes(item: item);
                   },

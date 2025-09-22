@@ -1,28 +1,28 @@
 
-import 'dart:convert';
+// import 'dart:convert';
 
-List<WallPaperModel> drawerItemModelFromJson(String str) => List<WallPaperModel>.from(json.decode(str).map((x) => WallPaperModel.fromJson(x)));
+// List<WallPaperModel> drawerItemModelFromJson(String str) => List<WallPaperModel>.from(json.decode(str).map((x) => WallPaperModel.fromJson(x)));
 
-String drawerItemModelToJson(List<WallPaperModel> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
+// String drawerItemModelToJson(List<WallPaperModel> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
-class WallPaperModel {
-    final int id;
-    final String image;
+// class WallPaperModel {
+//     final int id;
+//     final String image;
 
-    WallPaperModel({
-        required this.id,
-        required this.image,
-    });
+//     WallPaperModel({
+//         required this.id,
+//         required this.image,
+//     });
 
-    factory WallPaperModel.fromJson(Map<String, dynamic> json) => WallPaperModel(
-        id: json["id"],
-        image: json["image"],
+//     factory WallPaperModel.fromJson(Map<String, dynamic> json) => WallPaperModel(
+//         id: json["id"],
+//         image: json["image"],
         
-    );
+//     );
 
-    Map<String, dynamic> toJson() => {
-        "id": id,
-        "image": image,
+//     Map<String, dynamic> toJson() => {
+//         "id": id,
+//         "image": image,
        
-    };
-}
+//     };
+// }

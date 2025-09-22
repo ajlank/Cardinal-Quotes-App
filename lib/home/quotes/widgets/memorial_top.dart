@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 class MemorialTop extends StatelessWidget {
-  const MemorialTop({super.key});
-
+  const MemorialTop({super.key, required this.title});
+  final String title;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -12,8 +12,8 @@ class MemorialTop extends StatelessWidget {
           child: Image.asset('assets/sleep_sounds/right_arrow.png'),
         ),
         const SizedBox(width: 7),
-        const Text(
-          'Memorial Card',
+         Text(
+          title,
           style: TextStyle(color: Colors.white, fontWeight: FontWeight.w400),
         ),
       ],

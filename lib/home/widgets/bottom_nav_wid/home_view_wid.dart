@@ -93,6 +93,12 @@ class HomeViewWid extends StatelessWidget {
                     TextButton(
                       onPressed: () {
                         Navigator.of(context).pushNamed(wallpaperRoute);
+                        context
+                            .read<BottomNavNotifier>()
+                            .setVisualCategoryAndTitle(
+                              'wallpaper',
+                              'Wallpaper',
+                            );
                       },
                       child: const Text(
                         'See All',
@@ -125,6 +131,12 @@ class HomeViewWid extends StatelessWidget {
                   children: [
                     GestureDetector(
                       onTap: () {
+                        context
+                            .read<BottomNavNotifier>()
+                            .setQuotesCategoryAndTitle(
+                              'top_quotes',
+                              'Top Quotes',
+                            );
                         Navigator.of(context).pushNamed(topQuotesRoute);
                       },
                       child: Text(
@@ -159,6 +171,12 @@ class HomeViewWid extends StatelessWidget {
                   children: [
                     GestureDetector(
                       onTap: () {
+                        context
+                            .read<BottomNavNotifier>()
+                            .setVisualCategoryAndTitle(
+                              'memorial_card',
+                              'Memorial Cards',
+                            );
                         Navigator.of(context).pushNamed(memorialRoute);
                       },
                       child: Text(

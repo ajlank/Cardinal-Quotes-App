@@ -2,7 +2,7 @@ import 'package:cardinal_quotes_app/home/model/body_items_model.dart';
 
 List<BodyItemsModel> bodyItems = [
   BodyItemsModel(id: 1, image: 'assets/body_grid_items/cardinalsounds.png', title: 'Cardinal Sounds', category: 'cardinal_sounds'),
-  BodyItemsModel(id: 2, image: 'assets/body_grid_items/wall.png', title: 'Wallpaper', category: ''),
+  BodyItemsModel(id: 2, image: 'assets/body_grid_items/wall.png', title: 'Wallpaper', category: 'wallpaper'),
   BodyItemsModel(id: 3, image:'assets/body_grid_items/NaturalSounds.png', title: 'Nature Sounds', category: 'nature_sounds'),
   BodyItemsModel(id: 4, image: 'assets/body_grid_items/SleepingSounds.png', title: 'Sleeping Sounds', category: 'sleeping_sounds'),
   BodyItemsModel(id: 5, image:'assets/body_grid_items/Meditation.png', title: 'Meditation', category: 'meditation'),
@@ -13,7 +13,7 @@ List<BodyItemsModel> bodyItems = [
   BodyItemsModel(id: 10, image:'assets/body_grid_items/Soul_checkin.png', title: 'Soul Check-In', category: ''),
   BodyItemsModel(id: 11, image:'assets/body_grid_items/sacred_journals.png', title: 'Sacred Journals', category: ''),
   BodyItemsModel(id: 12, image:'assets/body_grid_items/Medicine_notes.png', title: 'Medicine Notes', category: ''),
-  BodyItemsModel(id: 13, image:'assets/body_grid_items/memorial_cards.png', title: 'Memorial Cards', category: ''),
+  BodyItemsModel(id: 13, image:'assets/body_grid_items/memorial_cards.png', title: 'Memorial Cards', category: 'memorial_card'),
   BodyItemsModel(id: 14, image: 'assets/body_grid_items/save.png', title: 'Save', category: ''),
   BodyItemsModel(id: 15, image: 'assets/body_grid_items/cardinal_quotes.png', title: 'Cardinal Quotes', category: 'cardinal_quotes'),
 ];

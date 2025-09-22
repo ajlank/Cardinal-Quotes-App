@@ -5,7 +5,7 @@ AllQuotesModel allQuotesModelFromJson(String str) => AllQuotesModel.fromJson(jso
 String allQuotesModelToJson(AllQuotesModel data) => json.encode(data.toJson());
 
 class AllQuotesModel {
-  final id;
+    final id;
     final String status;
     final List<QuotesData> data;
 

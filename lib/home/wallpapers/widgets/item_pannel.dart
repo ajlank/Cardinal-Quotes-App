@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class ItemPannel extends StatelessWidget {
-  const ItemPannel({super.key});
-
+  const ItemPannel({super.key, required this.viewCount});
+  final int viewCount;
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -34,7 +34,7 @@ class ItemPannel extends StatelessWidget {
                   IconButton(
                     icon: const Icon(Icons.close, size: 18),
                     onPressed: () {
-                      context.read<BottomNavNotifier>().setIsClicked(false);
+                      context.read<BottomNavNotifier>().setIsClickedd(false);
                     },
                   ),
                 ],
@@ -53,7 +53,7 @@ class ItemPannel extends StatelessWidget {
                       colorBlendMode: BlendMode.srcIn,
                     ),
                     const SizedBox(width: 11),
-                    const Text('56757k'),
+                     Text(viewCount.toString()),
                   ],
                 ),
                 const SizedBox(height: 8),

@@ -5,7 +5,6 @@ import 'package:cardinal_quotes_app/home/sleepsounds/widgets/timer_pannel.dart';
 import 'package:cardinal_quotes_app/home/sleepsounds/widgets/top_bottom.dart';
 import 'package:cardinal_quotes_app/home/sleepsounds/widgets/top_header.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class SoundDetails extends StatefulWidget {
   const SoundDetails({super.key});

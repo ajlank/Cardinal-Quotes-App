@@ -16,14 +16,39 @@ class BottomNavNotifier extends ChangeNotifier {
   
   String _quotesCategory='';
   String _quotesViewTitle='';
+  String _visualCategory='';
+  String _visualViewTitle='';
+  bool isClickedd = false; 
+  int? selectedItemIds; 
+
+  void setSelectedItem(int id) {
+    selectedItemIds = id; 
+    isClickedd = true; 
+    notifyListeners();
+  }
+ void setIsClickedd(bool f){
+     selectedItemIds = null; 
+  isClickedd=f;
+  notifyListeners();
+ }
 
   void setQuotesCategoryAndTitle(String n,String title){
     _quotesCategory=n;
     _quotesViewTitle=title;
     notifyListeners();
   }
-  String get getQuotesCategory=>_quotesCategory;
+
+  void setVisualCategoryAndTitle(String n, String t){
+    _visualCategory=n;
+    _visualViewTitle=t;
+    notifyListeners();
+  }
+   
+  String get getVisualCategory=>_visualCategory;
  String get getQuotesViewTitle=>_quotesViewTitle;
+
+  String get getQuotesCategory=>_quotesCategory;
+ String get getVisualViewTitle=>_visualViewTitle;
   
   void setSoundCategoryAndTitle(String category,String title){
    _soundCategory=category;
