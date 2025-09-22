@@ -11,6 +11,35 @@ class BottomNavNotifier extends ChangeNotifier {
   bool _isClicked = false;
   int _selectedTabIndex = 0;
 
+  String _soundCategory='';
+  String _soundViewTitle='';
+  
+  String _quotesCategory='';
+  String _quotesViewTitle='';
+
+  void setQuotesCategoryAndTitle(String n,String title){
+    _quotesCategory=n;
+    _quotesViewTitle=title;
+    notifyListeners();
+  }
+  String get getQuotesCategory=>_quotesCategory;
+ String get getQuotesViewTitle=>_quotesViewTitle;
+  
+  void setSoundCategoryAndTitle(String category,String title){
+   _soundCategory=category;
+   _soundViewTitle=title;
+   notifyListeners();
+  }
+
+  void setSoundViewTitle(String n){
+    _soundViewTitle=n;
+    notifyListeners();
+  }
+
+  String get soundViewTitle=>_soundViewTitle;
+
+  String get getSoundCategory=>_soundCategory;
+  
   int get selectedTabIndex => _selectedTabIndex;
 
   void setTabIndex(int index) {

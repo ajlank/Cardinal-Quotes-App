@@ -13,25 +13,25 @@ class BodyItems extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
+        
        context.read<BottomNavNotifier>().setId(bodyItem!.id);
-       if(context.read<BottomNavNotifier>().getId==1 ||context.read<BottomNavNotifier>().getId==3 || context.read<BottomNavNotifier>().getId==4){
-         Navigator.of(context).pushNamed(sleepSoundsRoute);
+
+       if(context.read<BottomNavNotifier>().getId==1 ||context.read<BottomNavNotifier>().getId==3 || context.read<BottomNavNotifier>().getId==4 || context.read<BottomNavNotifier>().getId==5 || context.read<BottomNavNotifier>().getId==7 || context.read<BottomNavNotifier>().getId==8){
+         context.read<BottomNavNotifier>().setSoundCategoryAndTitle(bodyItem!.category,bodyItem!.title);
+         Navigator.of(context).pushNamed(allSoundsRoute);
+         
        }else if(context.read<BottomNavNotifier>().getId==2){
         Navigator.of(context).pushNamed(wallpaperRoute);
        }else if(context.read<BottomNavNotifier>().getId==5 || context.read<BottomNavNotifier>().getId==6 || context.read<BottomNavNotifier>().getId==8){
         Navigator.of(context).pushNamed(meditationRoute);
-       }else if(context.read<BottomNavNotifier>().getId==9){
-       Navigator.of(context).push(PageRouteBuilder(
-        transitionDuration: const Duration(milliseconds: 800),
-        reverseTransitionDuration: const Duration(milliseconds: 800),
-        pageBuilder: (_, __, ___) => const TopQuotesView(),
-      ));
+       }else if(context.read<BottomNavNotifier>().getId==9 || context.read<BottomNavNotifier>().getId==15){
+        context.read<BottomNavNotifier>().setQuotesCategoryAndTitle(bodyItem!.category, bodyItem!.title);
+        Navigator.of(context).push(PageRouteBuilder(
+          transitionDuration: const Duration(milliseconds: 800),
+          reverseTransitionDuration: const Duration(milliseconds: 800),
+          pageBuilder: (_, __, ___) => const QuotesView(),
+        ));
        }else if(context.read<BottomNavNotifier>().getId==11){
-      //  Navigator.of(context).push(PageRouteBuilder(
-      //   transitionDuration: const Duration(milliseconds: 800),
-      //   reverseTransitionDuration: const Duration(milliseconds: 800),
-      //   pageBuilder: (_, __, ___) => const SacredJournals(),
-      // ));
 
       Navigator.of(context).pushNamed(sacredJournalsRoute);
 
@@ -52,7 +52,7 @@ class BodyItems extends StatelessWidget {
        }
       
       },
-      child: Padding(
+      child:Padding(
         padding: const EdgeInsets.all(8.0),
         child: Container(
           decoration: BoxDecoration(
@@ -62,6 +62,7 @@ class BodyItems extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              
               Image.asset(bodyItem!.image),
               SizedBox(height: 5),
               Text(

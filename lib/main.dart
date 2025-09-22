@@ -8,25 +8,14 @@ import 'package:cardinal_quotes_app/home/quotes/views/top_quotes_view.dart';
 import 'package:cardinal_quotes_app/home/sacredJournals/views/sacred_journals.dart';
 import 'package:cardinal_quotes_app/home/save/views/save_view.dart';
 import 'package:cardinal_quotes_app/home/widgets/bottom_nav_wid.dart';
-import 'package:cardinal_quotes_app/home/sleepsounds/views/sleep_sounds_view.dart';
+import 'package:cardinal_quotes_app/home/sleepsounds/views/all_sounds_view.dart';
 import 'package:cardinal_quotes_app/home/sleepsounds/views/sound_details.dart';
 import 'package:cardinal_quotes_app/home/soulcheckin/views/soul_checkin_view.dart';
 import 'package:cardinal_quotes_app/home/medicinenotes/views/create_todos.dart';
 import 'package:cardinal_quotes_app/home/wallpapers/wallpaper_view.dart';
-import 'package:cardinal_quotes_app/home/widgets/body_items.dart';
 import 'package:cardinal_quotes_app/home/widgets/bottom_nav_wid/home_view_wid.dart';
-import 'package:cardinal_quotes_app/home/widgets/item_builder.dart';
-import 'package:cardinal_quotes_app/home/widgets/resuable/home/features/announcement.dart';
-import 'package:cardinal_quotes_app/home/widgets/resuable/home/features/feature_memorial_cards.dart';
-import 'package:cardinal_quotes_app/home/widgets/resuable/home/features/feature_wallpaper.dart';
-import 'package:cardinal_quotes_app/home/widgets/resuable/home/features/featured_quotes.dart';
-import 'package:cardinal_quotes_app/home/widgets/resuable/home/features/turn_on_feature_quotes.dart';
-import 'package:cardinal_quotes_app/home/widgets/resuable/home/features/turn_on_feature_wallpaper.dart';
 import 'package:cardinal_quotes_app/utils/appRoutes/constants/constant.dart';
-import 'package:cardinal_quotes_app/utils/data/data_app_barr.dart';
-import 'package:cardinal_quotes_app/utils/data/data_body_items.dart';
 import 'package:flutter/material.dart';
-import 'package:cardinal_quotes_app/home/widgets/drawerpart.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -52,11 +41,11 @@ class MyApp extends StatelessWidget {
       ),
       home:HomeView(),
       routes: {
-        sleepSoundsRoute: (context) => SleepSoundsView(),
+        allSoundsRoute: (context) => AllSoundsView(),
         soundDetailsRoute: (context) => SoundDetails(),
         wallpaperRoute: (context) => WallPaperView(),
         meditationRoute:(context)=>MeditationView(),
-        topQuotesRoute:(context)=>TopQuotesView(),
+        topQuotesRoute:(context)=>QuotesView(),
         sacredJournalsRoute:(context)=>SacredJournals(),
         noteCreateRoute:(context)=>NotesCreateView(),
         soulCheckInRoute:(context)=>SoulCheckinView(),
@@ -75,9 +64,9 @@ class HomeView extends StatelessWidget {
 
  final List<Widget>views=[
   HomeViewWid(),
-  SleepSoundsView(),
+  AllSoundsView(),
   SoulCheckIn(),
-  TopQuotesView(),
+  QuotesView(),
  ];
   @override
   Widget build(BuildContext context) {
@@ -170,3 +159,4 @@ class HomeView extends StatelessWidget {
     );
   }
 }
+

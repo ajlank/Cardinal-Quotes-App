@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 class TopHeader extends StatelessWidget {
-  const TopHeader({super.key});
-
+  const TopHeader({super.key, required this.headerTitle});
+  final String headerTitle;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -12,8 +12,8 @@ class TopHeader extends StatelessWidget {
           child: Image.asset('assets/sleep_sounds/right_arrow.png'),
         ),
         const SizedBox(width: 7),
-        const Text(
-          'Sleep Sounds',
+         Text(
+          headerTitle,
           style: TextStyle(color: Colors.white, fontWeight: FontWeight.w400),
         ),
       ],

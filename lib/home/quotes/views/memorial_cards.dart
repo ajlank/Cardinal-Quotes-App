@@ -25,7 +25,7 @@ class MemorialCards extends StatelessWidget {
                   
                   var item=topQuotes[i];
                   
-                   return DetailsTopQuotes(item: item);
+                  //  return DetailsTopQuotes(item: item);
                   },
                 ),
               ),

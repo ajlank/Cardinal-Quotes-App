@@ -1,136 +1,72 @@
-import 'package:cardinal_quotes_app/home/sleepsounds/model/sleep_sounds_model.dart';
+// details_s.dart
+import 'package:cardinal_quotes_app/home/rest_api_all_sounds/model/sounds_model.dart';
+import 'package:cardinal_quotes_app/home/wallpapers/widgets/icon_with_text.dart';
 import 'package:cardinal_quotes_app/utils/appRoutes/constants/constant.dart';
 import 'package:flutter/material.dart';
 
 class DetailsS extends StatelessWidget {
-  const DetailsS({super.key,required this.item});
-  final SleepSoundsModel? item;
+  const DetailsS({super.key, required this.item});
+  final Data? item;
+
   @override
   Widget build(BuildContext context) {
+    if (item == null) return const SizedBox();
+
     return GestureDetector(
       onTap: () {
         Navigator.of(context).pushNamed(soundDetailsRoute);
       },
       child: SizedBox(
-        height: 340,
-        child: Column(
-          children: [
-            ClipRRect(
-              borderRadius: BorderRadiusGeometry.circular(12),
-              child: Image.asset(item!.image),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 6.5,
-                vertical: 12,
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              ClipRRect(
+                borderRadius: BorderRadius.circular(12),
+                child: Image.network(
+                  item!.imgPath ?? '',
+                  fit: BoxFit.cover,
+                ),
               ),
-              child: Column(
-                children: [
-                  Row(
-                    children: [
-                      Column(
-                        children: [
-                          Text(
-                            item!.title,
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.w500,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: 4),
-                  Row(
-                    children: List.generate(item!.tags.length, (i) {
-                      var tag = item!.tags[i];
-                      return Padding(
-                        padding: const EdgeInsets.only(right: 10),
-                        child: Text(tag, style: TextStyle(color: Colors.white)),
-                      );
-                    }),
-                  ),
-                  SizedBox(height: 6),
-                  Row(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(right: 12),
-                        child: Column(
-                          children: [
-                            Row(
-                              children: [
-                                Image.asset('assets/sleep_sounds/eye.png'),
-                                SizedBox(width: 3),
-                                Text(
-                                  '577777k',
-                                  style: TextStyle(color: Colors.white),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
-
-                      Padding(
-                        padding: const EdgeInsets.only(right: 12),
-                        child: Column(
-                          children: [
-                            Row(
-                              children: [
-                                Image.asset('assets/sleep_sounds/share.png'),
-                                SizedBox(width: 3),
-                                Text(
-                                  'Share',
-                                  style: TextStyle(color: Colors.white),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(right: 12),
-                        child: Column(
-                          children: [
-                            Row(
-                              children: [
-                                Image.asset('assets/sleep_sounds/download.png'),
-                                SizedBox(width: 3),
-                                Text(
-                                  'Download',
-                                  style: TextStyle(color: Colors.white),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(right: 12),
-                        child: Column(
-                          children: [
-                            Row(
-                              children: [
-                                Image.asset('assets/sleep_sounds/save.png'),
-                                SizedBox(width: 3),
-                                Text(
-                                  'Save',
-                                  style: TextStyle(color: Colors.white),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 6.5, vertical: 12),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      item!.name ?? "Unknown",
+                      style: const TextStyle(
+                          color: Colors.white, fontWeight: FontWeight.w500),
+                    ),
+                    const SizedBox(height: 4),
+                    Wrap(
+                      spacing: 10,
+                      children: List.generate(item!.keywords.length, (i){
+                        var tag= item!.keywords[i];
+                        return Text("#$tag", style: const TextStyle(color: Colors.white));
+                      })
+                    ),
+                    const SizedBox(height: 6),
+                    Row(
+                      children: [
+                        IconWithText(asset:'assets/sleep_sounds/eye.png' , text:item!.viewCount.toString()),
+                        const SizedBox(width: 12),
+                         IconWithText(asset:'assets/sleep_sounds/share.png',text:'Share'),
+                        const SizedBox(width: 12),
+                         IconWithText(asset:'assets/sleep_sounds/download.png',text:'Download'),
+                        const SizedBox(width: 12),
+                         IconWithText(asset:'assets/sleep_sounds/save.png',text:'Save'),
+                       
+                      ],
+                    ),
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
   }
+
+ 
 }

@@ -1,12 +1,12 @@
-import 'package:cardinal_quotes_app/home/quotes/model/topquotes_model.dart';
+import 'package:cardinal_quotes_app/home/rest_api_all_quotes/model/quotes_model.dart';
 import 'package:flutter/material.dart';
 
 class DetailsTopQuotes extends StatelessWidget {
   const DetailsTopQuotes({super.key, required this.item});
-  final TopQuotesModel? item;
+  final QuotesData? item;
   @override
   Widget build(BuildContext context) {
-    final wid=MediaQuery.of(context).size.width;
+    final wid = MediaQuery.of(context).size.width;
     return SizedBox(
       height: 310,
       child: Column(
@@ -16,50 +16,53 @@ class DetailsTopQuotes extends StatelessWidget {
             child: Stack(
               alignment: Alignment.center,
               children: [
-                
-                (item!.id == 3)
+                (item!.isText == 0)
                     ? Hero(
                         tag: 'hey101',
-                        child: Image.asset(
-                          item!.image,
+                        child: Image.network(
+                          item!.quote,
                           width: MediaQuery.of(context).size.width * 0.9,
                           height: 200,
                           fit: BoxFit.cover,
                         ),
                       )
-                    : Image.asset(
-                        item!.image,
-                    width: wid*.90,
-                    fit: BoxFit.cover,
-                  ),
-                Text(
-                  item!.centerText,
-                  
-                  style: const TextStyle(
-                    fontSize: 15,
-                    fontWeight: FontWeight.bold,
-                  
-                  ),
-                  textAlign: TextAlign.center,
-                ),
+                    : Container(
+                      height: 150,
+                      width: wid*.90,
+                      decoration: BoxDecoration(
+                        color: const Color.fromARGB(255, 181, 200, 182)
+                      ),
+                      child: Center(
+                        child: Text(
+                            item!.quote,
+                            
+                            style: const TextStyle(
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white
+                            ),
+                            textAlign: TextAlign.center,
+                          ),
+                      ),
+                    ),
               ],
             ),
           ),
-    
+
           Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 6.5,
-              vertical: 12,
-            ),
+            padding: const EdgeInsets.symmetric(horizontal: 6.5, vertical: 12),
             child: Column(
               children: [
                 SizedBox(height: 4),
                 Row(
-                  children: List.generate(item!.tags.length, (i) {
-                    var tag = item!.tags[i];
+                  children: List.generate(item!.keywords.length, (i) {
+                    var tag = item!.keywords[i];
                     return Padding(
                       padding: const EdgeInsets.only(right: 10),
-                      child: Text(tag, style: TextStyle(color: Colors.white)),
+                      child: Text(
+                        "#$tag",
+                        style: TextStyle(color: Colors.white),
+                      ),
                     );
                   }),
                 ),
@@ -75,7 +78,7 @@ class DetailsTopQuotes extends StatelessWidget {
                               Image.asset('assets/sleep_sounds/eye.png'),
                               SizedBox(width: 3),
                               Text(
-                                '577777k',
+                                item!.viewCount.toString(),
                                 style: TextStyle(color: Colors.white),
                               ),
                             ],
@@ -83,7 +86,7 @@ class DetailsTopQuotes extends StatelessWidget {
                         ],
                       ),
                     ),
-    
+
                     Padding(
                       padding: const EdgeInsets.only(right: 12),
                       child: Column(

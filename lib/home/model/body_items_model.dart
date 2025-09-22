@@ -7,17 +7,20 @@ String drawerItemModelToJson(List<BodyItemsModel> data) => json.encode(List<dyna
 
 class BodyItemsModel {
     final int id;
+    final String category;
     final String image;
     final String title;
 
     BodyItemsModel({
         required this.id,
+        required this.category,
         required this.image,
         required this.title,
     });
 
     factory BodyItemsModel.fromJson(Map<String, dynamic> json) => BodyItemsModel(
         id: json["id"],
+        category: json["category"],
         image: json["image"],
         title: json["title"],
     );
@@ -26,5 +29,6 @@ class BodyItemsModel {
         "id": id,
         "image": image,
         "title": title,
+        "category":category
     };
 }

@@ -5,6 +5,7 @@ import 'package:cardinal_quotes_app/home/sleepsounds/widgets/timer_pannel.dart';
 import 'package:cardinal_quotes_app/home/sleepsounds/widgets/top_bottom.dart';
 import 'package:cardinal_quotes_app/home/sleepsounds/widgets/top_header.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class SoundDetails extends StatefulWidget {
   const SoundDetails({super.key});
@@ -49,7 +50,7 @@ class _SoundDetailsState extends State<SoundDetails>
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Column(
             children: [
-              TopHeader(),
+              TopHeader(headerTitle: '',),
               const SizedBox(height: 60),
               TopBottom(controller: _controller,animation: _animation, ht: ht, wid: wid),
               const SizedBox(height: 20),

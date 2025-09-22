@@ -1,5 +1,4 @@
 import 'package:cardinal_quotes_app/home/quotes/widgets/details_top_quotes.dart';
-import 'package:cardinal_quotes_app/home/quotes/widgets/top.dart';
 import 'package:cardinal_quotes_app/home/quotes/widgets/top_s.dart';
 import 'package:cardinal_quotes_app/utils/data/data_top_quites.dart';
 import 'package:flutter/material.dart';
@@ -26,7 +25,7 @@ class SoulCheckIn extends StatelessWidget {
                   
                   var item=topQuotes[i];
                   
-                   return DetailsTopQuotes(item: item);
+                  //  return DetailsTopQuotes(item: item);
                   },
                 ),
               ),
