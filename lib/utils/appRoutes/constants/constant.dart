@@ -15,3 +15,5 @@ const String scRoute='/soulCheckIn';
 const String signUpRoute='/signUp';
 const String loginRoute='/login';
 const String homeRoute='/homes';
+const String updateNoteRoute='/updateNote';
+const String searchViewRoute='/searchView';

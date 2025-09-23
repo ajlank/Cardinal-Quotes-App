@@ -1,4 +1,4 @@
-import 'package:cardinal_quotes_app/home/sleepsounds/model/sleep_sounds_model.dart';
+import 'package:cardinal_quotes_app/home/audios/sleepsounds/model/sleep_sounds_model.dart';
 
 final List<SleepSoundsModel> sleepSounds=[
   SleepSoundsModel(image: 'assets/sleep_sounds/music1.png', 

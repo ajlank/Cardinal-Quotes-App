@@ -1,6 +1,5 @@
 import 'package:cardinal_quotes_app/auth/models/token_model.dart';
 import 'package:cardinal_quotes_app/utils/appRoutes/constants/constant.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:http/http.dart' as http;

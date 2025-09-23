@@ -1,11 +1,11 @@
-import 'package:cardinal_quotes_app/home/quotes/rest_api_all_quotes/model/quotes_model.dart';
+import 'package:cardinal_quotes_app/home/visuals/rest_api_all_visuals/model/wallpaper_model.dart';
 import 'package:cardinal_quotes_app/home/quotes/save_backends/controller/post_save_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class DetailsTopQuotes extends StatelessWidget {
-  const DetailsTopQuotes({super.key, required this.item});
-  final QuotesData? item;
+class DetailsVisuals extends StatelessWidget {
+  const DetailsVisuals({super.key, required this.item});
+  final WallPaperData item;
   @override
   Widget build(BuildContext context) {
     final wid = MediaQuery.of(context).size.width;
@@ -18,35 +18,13 @@ class DetailsTopQuotes extends StatelessWidget {
             child: Stack(
               alignment: Alignment.center,
               children: [
-                (item!.isText == 0)
-                    ? Hero(
-                        tag: 'hey101',
-                        child: Image.network(
-                          item!.quote,
-                          width: MediaQuery.of(context).size.width * 0.9,
-                          height: 200,
-                          fit: BoxFit.cover,
-                        ),
-                      )
-                    : Container(
-                      height: 150,
-                      width: wid*.90,
-                      decoration: BoxDecoration(
-                        color: const Color.fromARGB(255, 181, 200, 182)
-                      ),
-                      child: Center(
-                        child: Text(
-                            item!.quote,
-                            
-                            style: const TextStyle(
-                              fontSize: 15,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white
-                            ),
-                            textAlign: TextAlign.center,
-                          ),
-                      ),
-                    ),
+                Image.network(
+                  item.imagePath,
+                  width: MediaQuery.of(context).size.width * 0.9,
+                  height: 200,
+                  fit: BoxFit.cover,
+                )
+                    
               ],
             ),
           ),
@@ -57,8 +35,8 @@ class DetailsTopQuotes extends StatelessWidget {
               children: [
                 SizedBox(height: 4),
                 Row(
-                  children: List.generate(item!.keywords.length, (i) {
-                    var tag = item!.keywords[i];
+                  children: List.generate(item.keywords.length, (i) {
+                    var tag = item.keywords[i];
                     return Padding(
                       padding: const EdgeInsets.only(right: 10),
                       child: Text(
@@ -80,7 +58,7 @@ class DetailsTopQuotes extends StatelessWidget {
                               Image.asset('assets/sleep_sounds/eye.png'),
                               SizedBox(width: 3),
                               Text(
-                                item!.viewCount.toString(),
+                                item.viewCount.toString(),
                                 style: TextStyle(color: Colors.white),
                               ),
                             ],
@@ -129,7 +107,7 @@ class DetailsTopQuotes extends StatelessWidget {
                         children: [
                           GestureDetector(
                             onTap: () {
-                              context.read<PostSaveController>().savePost('quote', item!.id);
+                              context.read<PostSaveController>().savePost('visual', item.id);
                             },
                             child: Row(
                               children: [
@@ -155,23 +133,3 @@ class DetailsTopQuotes extends StatelessWidget {
     );
   }
 }
-
-//  final result = fetchVisualByCategory(
-//       context.read<BottomNavNotifier>().getVisualCategory,
-//     );
-
-//     if (result.isLoading) {
-//       return const Scaffold(
-//         body: Center(child: CircularProgressIndicator()),
-//       );
-//     }
-
-//     if (result.error != null) {
-//       return Center(child: Text("Error: ${result.error}"));
-//     }
-
-//     if (result.wallpaper.isEmpty || result.wallpaper.first.data.isEmpty) {
-//       return const Center(child: Text("No visuals found"));
-//     }
-
-//     final wallPaper = result.wallpaper.first.data;
