@@ -73,35 +73,38 @@ class HomeView extends StatelessWidget {
                             ),
                           ],
                         ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            const Text(
-                              "Notifications",
-                              style: TextStyle(
-                                color: Color(0xFF4A3A2A),
-                                fontSize: 14,
-                                fontWeight: FontWeight.w500,
+                        SingleChildScrollView(
+                          scrollDirection: Axis.horizontal,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              const Text(
+                                "Notifications",
+                                style: TextStyle(
+                                  color: Color(0xFF4A3A2A),
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w500,
+                                ),
                               ),
-                            ),
-                            Transform.scale(
-                              scale: 0.6,
-                              child: Switch(
-                                activeTrackColor: Color(0xFF4A3A2A),
-                                value: context
-                                    .watch<BottomNavNotifier>()
-                                    .switchOn,
-                                onChanged: (v) {
-                                  context
-                                      .read<BottomNavNotifier>()
-                                      .toggleTurnedOn();
-                                  context
-                                      .read<BottomNavNotifier>()
-                                      .toggleSwitch();
-                                },
+                              Transform.scale(
+                                scale: 0.6,
+                                child: Switch(
+                                  activeTrackColor: Color(0xFF4A3A2A),
+                                  value: context
+                                      .watch<BottomNavNotifier>()
+                                      .switchOn,
+                                  onChanged: (v) {
+                                    context
+                                        .read<BottomNavNotifier>()
+                                        .toggleTurnedOn();
+                                    context
+                                        .read<BottomNavNotifier>()
+                                        .toggleSwitch();
+                                  },
+                                ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ],
                     ),

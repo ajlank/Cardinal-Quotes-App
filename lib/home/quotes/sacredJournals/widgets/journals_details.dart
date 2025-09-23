@@ -21,45 +21,42 @@ class JournalsDetails extends StatelessWidget {
   Widget build(BuildContext context) {
     final wid = MediaQuery.of(context).size.width;
 
-    return Hero(
-      tag: 'top101',
-      child: GestureDetector(
-        onTap: () {
-          context.read<NoteController>().setTitleAndNote(data.title,data.note,data.id);
-          Navigator.of(context).pushNamed(updateNoteRoute);
-        },
-        child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 12),
-          child: Container(
-            width: wid * 0.9,
-            padding: const EdgeInsets.all(16), 
-            decoration: BoxDecoration(
-              color: colors[i % colors.length],
-              borderRadius: BorderRadius.circular(12),
-            ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center, 
-              crossAxisAlignment: CrossAxisAlignment.center, 
-              children: [
-                Text(
-                  data.title,
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                    color: (i==3)?Colors.white:Colors.black
-                  ),
-                ),
-                SizedBox(height: 8),
-                Text(
-                 data.note,
-                  textAlign: TextAlign.center, 
-                  style: TextStyle(fontSize: 14, height: 1.5,
+    return GestureDetector(
+      onTap: () {
+        context.read<NoteController>().setTitleAndNote(data.title,data.note,data.id);
+        Navigator.of(context).pushNamed(updateNoteRoute);
+      },
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 12),
+        child: Container(
+          width: wid * 0.9,
+          padding: const EdgeInsets.all(16), 
+          decoration: BoxDecoration(
+            color: colors[i % colors.length],
+            borderRadius: BorderRadius.circular(12),
+          ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center, 
+            crossAxisAlignment: CrossAxisAlignment.center, 
+            children: [
+              Text(
+                data.title,
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
                   color: (i==3)?Colors.white:Colors.black
-                  ),
                 ),
-              ],
-            ),
+              ),
+              SizedBox(height: 8),
+              Text(
+               data.note,
+                textAlign: TextAlign.center, 
+                style: TextStyle(fontSize: 14, height: 1.5,
+                color: (i==3)?Colors.white:Colors.black
+                ),
+              ),
+            ],
           ),
         ),
       ),

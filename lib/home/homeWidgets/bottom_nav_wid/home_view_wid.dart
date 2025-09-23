@@ -21,10 +21,10 @@ class HomeViewWid extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-   String? accessToken=GetStorage().read('accessToken');
-     if(accessToken==null){
+    String? accessToken = GetStorage().read('accessToken');
+    if (accessToken == null) {
       return AuthenticationView();
-     }
+    }
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 181, 25, 14),
       drawer: Drawerpart(),
@@ -35,28 +35,25 @@ class HomeViewWid extends StatelessWidget {
         ),
         toolbarHeight: 80,
         centerTitle: false,
-        title: Hero(
-          tag: 'top101',
-          child: LayoutBuilder(
-            builder: (context, constraints) {
-              return SizedBox(
-                height: 40,
-                width: constraints.maxWidth,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                  child: ListView.builder(
-                    scrollDirection: Axis.horizontal,
-                    physics: const BouncingScrollPhysics(),
-                    itemCount: appBarItems.length,
-                    itemBuilder: (context, index) {
-                      final item = appBarItems[index];
-                      return ItemBuilder(items: item);
-                    },
-                  ),
+        title: LayoutBuilder(
+          builder: (context, constraints) {
+            return SizedBox(
+              height: 40,
+              width: constraints.maxWidth,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  physics: const BouncingScrollPhysics(),
+                  itemCount: appBarItems.length,
+                  itemBuilder: (context, index) {
+                    final item = appBarItems[index];
+                    return ItemBuilder(items: item);
+                  },
                 ),
-              );
-            },
-          ),
+              ),
+            );
+          },
         ),
       ),
       body: ListView(
@@ -71,9 +68,9 @@ class HomeViewWid extends StatelessWidget {
               physics: const NeverScrollableScrollPhysics(),
               children: List.generate(bodyItems.length, (index) {
                 var bodyItem = bodyItems[index];
-                if (bodyItem.id == 15) {
+                if (bodyItem.id == 11) {
                   return Hero(
-                    tag: 'hey101',
+                    tag: 'sacred_journals_hero',
                     child: BodyItems(bodyItem: bodyItem),
                   );
                 } else {
@@ -213,12 +210,11 @@ class HomeViewWid extends StatelessWidget {
 
                 GestureDetector(
                   onTap: () {
-                       context.read<BottomNavNotifier>()
-                            .setVisualCategoryAndTitle(
-                              'announcement',
-                              'Announcments',
-                            );
-                        Navigator.of(context).pushNamed(memorialRoute);
+                    context.read<BottomNavNotifier>().setVisualCategoryAndTitle(
+                      'announcement',
+                      'Announcments',
+                    );
+                    Navigator.of(context).pushNamed(memorialRoute);
                   },
                   child: Row(
                     children: [
@@ -226,7 +222,7 @@ class HomeViewWid extends StatelessWidget {
                         'See All',
                         style: TextStyle(color: Colors.white, fontSize: 14),
                       ),
-                  
+
                       SizedBox(width: 7),
                       Image.asset('assets/body_grid_items/arrow_right.png'),
                     ],

@@ -45,7 +45,7 @@ class QuotesView extends HookWidget {
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Column(
             children: [
-             TopHeader(headerTitle:context.read<BottomNavNotifier>().getQuotesViewTitle),
+           (context.read<BottomNavNotifier>().currentIndex>0)? SizedBox.shrink() :TopHeader(headerTitle:context.read<BottomNavNotifier>().getQuotesViewTitle),
               SizedBox(
                 height: 13,
               ),

@@ -42,22 +42,25 @@ class SacredJournals extends HookWidget {
 
       backgroundColor: const Color.fromARGB(255, 181, 25, 14),
       body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
-          child: Column(
-            children: [
-              TopHdTwo(topHd: 'Sacred Journals',),
-              SizedBox(height: 13),
-              Expanded(
-                child: ListView.builder(
-                  itemCount: notes.length,
-                  itemBuilder: (context, i) {
-                      var note=notes[i];
-                    return JournalsDetails(i: i, data: note,);
-                  },
+        child: Hero(
+          tag: 'sacred_journals_hero',
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+            child: Column(
+              children: [
+                TopHdTwo(topHd: 'Sacred Journals',),
+                SizedBox(height: 13),
+                Expanded(
+                  child: ListView.builder(
+                    itemCount: notes.length,
+                    itemBuilder: (context, i) {
+                        var note=notes[i];
+                      return JournalsDetails(i: i, data: note,);
+                    },
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

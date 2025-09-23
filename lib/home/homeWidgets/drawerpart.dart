@@ -11,6 +11,7 @@ class Drawerpart extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 12),
       child: Drawer(
+
         width: 258,
         backgroundColor: const Color(0xFFF5E6CC),
         child: Column(
@@ -88,20 +89,22 @@ class Drawerpart extends StatelessWidget {
                     );
                   }),
               
-                  const SizedBox(height: 20),
-              
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      GestureDetector(
-                        onTap: () {
-                          GetStorage().remove('accessToken');
-                          Navigator.of(context).pushNamedAndRemoveUntil(signUpRoute, (_)=>false);
-                        },
-                        child: const Text('Log Out')),
-                      const SizedBox(width: 10),
-                      Image.asset('assets/drawer_items/bottom/log_out.png'),
-                    ],
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 18),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        GestureDetector(
+                          onTap: () {
+                            GetStorage().remove('accessToken');
+                            Navigator.of(context).pushNamedAndRemoveUntil(signUpRoute, (_)=>false);
+                          },
+                          child: const Text('Log Out')),
+                        const SizedBox(width: 10),
+                        Image.asset('assets/drawer_items/bottom/log_out.png'),
+                      
+                      ],
+                    ),
                   ),
                 ],
               ),

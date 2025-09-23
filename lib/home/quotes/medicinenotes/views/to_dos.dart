@@ -25,7 +25,7 @@ class ToDos extends StatelessWidget {
                       transitionDuration: Duration(
                         milliseconds: 900,
                       ), 
-                      pageBuilder: (_, __, ___) => CreateTodos(), // target page
+                      pageBuilder: (_, __, ___) => CreateTodos(),
                     ),
                   );
                 },

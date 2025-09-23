@@ -3,7 +3,6 @@ import 'package:cardinal_quotes_app/home/save/widgets/contents/memorial_content.
 import 'package:cardinal_quotes_app/home/save/widgets/contents/quote_content.dart';
 import 'package:cardinal_quotes_app/home/save/widgets/contents/wallpaper_content.dart';
 import 'package:cardinal_quotes_app/home/quotes/save_backends/hooks/fetch/fetch_save_post.dart';
-import 'package:cardinal_quotes_app/home/quotes/save_backends/model/save_post_response.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:provider/provider.dart';

@@ -1,8 +1,10 @@
 import 'package:cardinal_quotes_app/home/controller/bottom_nav_notifier.dart';
 import 'package:cardinal_quotes_app/home/quotes/medicinenotes/views/to_dos.dart';
 import 'package:cardinal_quotes_app/home/model/body_items_model.dart';
+import 'package:cardinal_quotes_app/home/quotes/sacredJournals/views/sacred_journals.dart';
 import 'package:cardinal_quotes_app/home/quotes/views/top_quotes_view.dart';
 import 'package:cardinal_quotes_app/utils/appRoutes/constants/constant.dart';
+import 'package:cardinal_quotes_app/utils/styles/app_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -30,11 +32,19 @@ class BodyItems extends StatelessWidget {
         Navigator.of(context).push(PageRouteBuilder(
           transitionDuration: const Duration(milliseconds: 800),
           reverseTransitionDuration: const Duration(milliseconds: 800),
-          pageBuilder: (_, __, ___) => const QuotesView(),
+          pageBuilder: (_, __, ___) => QuotesView(),
         ));
        }else if(context.read<BottomNavNotifier>().getId==11){
 
-      Navigator.of(context).pushNamed(sacredJournalsRoute);
+      if(context.read<BottomNavNotifier>().getId == 11) {
+            Navigator.of(context).push(
+              PageRouteBuilder(
+                transitionDuration: const Duration(milliseconds: 800),
+                reverseTransitionDuration: const Duration(milliseconds: 800),
+                pageBuilder: (_, __, ___) => SacredJournals(),
+              ),
+            );
+          }
 
        }else if(context.read<BottomNavNotifier>().getId==10){
         Navigator.of(context).pushNamed(soulCheckInRoute);
@@ -42,15 +52,13 @@ class BodyItems extends StatelessWidget {
          Navigator.of(context).push(PageRouteBuilder(
         transitionDuration: const Duration(milliseconds: 800),
         reverseTransitionDuration: const Duration(milliseconds: 800),
-        pageBuilder: (_, __, ___) => const ToDos(),
+        pageBuilder: (_, __, ___) => ToDos(),
       ));
        }else if(context.read<BottomNavNotifier>().getId==14){
             Navigator.of(context).pushNamed(saveRoute);
        }else if(context.read<BottomNavNotifier>().getId==13){
         context.read<BottomNavNotifier>().setVisualCategoryAndTitle(bodyItem!.category,bodyItem!.title);
         Navigator.of(context).pushNamed(memorialRoute);
-       }else if(context.read<BottomNavNotifier>().getId==15){
-        Navigator.of(context).pushNamed(saveRoute);
        }
       
       },
@@ -59,12 +67,11 @@ class BodyItems extends StatelessWidget {
         child: Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(9),
-            color: Color.fromARGB(255, 241, 233, 172),
+            color: AppStyles.common,
           ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              
+            children: [     
               Image.asset(bodyItem!.image),
               SizedBox(height: 5),
               Text(

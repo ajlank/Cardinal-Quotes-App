@@ -24,15 +24,12 @@ class DetailsTopQuotes extends StatelessWidget {
                 alignment: Alignment.center,
                 children: [
                   (item!.isText == 0)
-                      ? Hero(
-                          tag: 'hey101',
-                          child: Image.network(
-                            item!.quote,
-                            width: MediaQuery.of(context).size.width * 0.9,
-                            height: 200,
-                            fit: BoxFit.cover,
-                          ),
-                        )
+                      ? Image.network(
+                        item!.quote,
+                        width: MediaQuery.of(context).size.width * 0.9,
+                        height: 200,
+                        fit: BoxFit.cover,
+                      )
                       : Container(
                         height: 150,
                         width: wid*.90,

@@ -75,7 +75,12 @@ class BottomNavWid extends StatelessWidget {
               ),
             ],
             onTap: (v) {
-              context.read<BottomNavNotifier>().setIndex(v);
+              if (v == 4) {
+                context.read<BottomNavNotifier>().setIsClosed(true);
+              } else {
+                context.read<BottomNavNotifier>().setIndex(v);
+              }
+           
             },
           ),
         ],
