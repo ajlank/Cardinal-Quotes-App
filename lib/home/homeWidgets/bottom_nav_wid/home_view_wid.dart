@@ -211,16 +211,26 @@ class HomeViewWid extends StatelessWidget {
                   style: TextStyle(color: Colors.white, fontSize: 14),
                 ),
 
-                Row(
-                  children: [
-                    Text(
-                      'See All',
-                      style: TextStyle(color: Colors.white, fontSize: 14),
-                    ),
-
-                    SizedBox(width: 7),
-                    Image.asset('assets/body_grid_items/arrow_right.png'),
-                  ],
+                GestureDetector(
+                  onTap: () {
+                       context.read<BottomNavNotifier>()
+                            .setVisualCategoryAndTitle(
+                              'announcement',
+                              'Announcments',
+                            );
+                        Navigator.of(context).pushNamed(memorialRoute);
+                  },
+                  child: Row(
+                    children: [
+                      Text(
+                        'See All',
+                        style: TextStyle(color: Colors.white, fontSize: 14),
+                      ),
+                  
+                      SizedBox(width: 7),
+                      Image.asset('assets/body_grid_items/arrow_right.png'),
+                    ],
+                  ),
                 ),
               ],
             ),

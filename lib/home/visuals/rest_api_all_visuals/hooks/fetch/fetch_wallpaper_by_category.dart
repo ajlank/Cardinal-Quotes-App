@@ -8,7 +8,7 @@ FetchAllVisualsResult fetchVisualByCategory(String category){
   final wallPaper = useState<List<WallPaperModel>>([]);
   final isLoading = useState(false);
   final error = useState<String?>(null);
-
+ 
   Future<void> fetchData() async {
     isLoading.value = true;
     try {
@@ -32,12 +32,17 @@ FetchAllVisualsResult fetchVisualByCategory(String category){
       isLoading.value = false;
     }
   }
-
+  void refetch(){
+    fetchData();
+    isLoading.value=false;
+  }
   useEffect(() {
     fetchData();
     return null;
   }, const []);
 
   return FetchAllVisualsResult(wallpaper: wallPaper.value,
-   isLoading: isLoading.value, error: error.value);
+   isLoading: isLoading.value, error: error.value,
+   refetch: refetch
+   );
 }

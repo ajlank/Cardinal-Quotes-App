@@ -14,6 +14,9 @@ class MemorialCards extends HookWidget {
      final result = fetchVisualByCategory(
       context.read<BottomNavNotifier>().getVisualCategory,
     );
+     
+     final refetch=result.refetch;
+     
 
     if (result.isLoading) {
       return const Scaffold(
@@ -30,6 +33,7 @@ class MemorialCards extends HookWidget {
     }
 
     final visual = result.wallpaper.first.data;
+    refetch();
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 181, 25, 14),
       body: SafeArea(

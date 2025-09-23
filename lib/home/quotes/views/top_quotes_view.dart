@@ -21,6 +21,7 @@ class QuotesView extends HookWidget {
     final result = fetchQuotesByCategory(
      check
     );
+         final refetch=result.refetch;
     if (result.isLoading) {
       return Scaffold(
         body: Center(child: CircularProgressIndicator()),
@@ -35,7 +36,8 @@ class QuotesView extends HookWidget {
       return const Center(child: Text("No sounds found"));
     }
     final quotesItem = result.quotes.first.data;
-  
+
+    refetch();
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 181, 25, 14),
       body: SafeArea(

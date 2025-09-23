@@ -8,7 +8,7 @@ FetchQuotesCategoryResult fetchQuotesByCategory(String category){
   final allQuotes = useState<List<AllQuotesModel>>([]);
   final isLoading = useState(false);
   final error = useState<String?>(null);
-
+  
   Future<void> fetchData() async {
     isLoading.value = true;
     try {
@@ -32,12 +32,16 @@ FetchQuotesCategoryResult fetchQuotesByCategory(String category){
       isLoading.value = false;
     }
   }
+  void refetch(){
+    fetchData();
+    isLoading.value=false;
 
+  }
   useEffect(() {
     fetchData();
     return null;
   }, const []);
 
    return FetchQuotesCategoryResult(quotes: allQuotes.value, 
-   isLoading: isLoading.value, error: error.value);
+   isLoading: isLoading.value, error: error.value, refetch: refetch);
 }

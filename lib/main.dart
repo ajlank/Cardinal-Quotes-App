@@ -1,10 +1,8 @@
 import 'package:cardinal_quotes_app/auth/controller/auth_controller.dart';
-import 'package:cardinal_quotes_app/auth/views/authentication_view.dart';
 import 'package:cardinal_quotes_app/home/controller/bottom_nav_notifier.dart';
 import 'package:cardinal_quotes_app/home/quotes/notes/controller/note_controller.dart';
 import 'package:cardinal_quotes_app/home/quotes/sacredJournals/controller/user_search_controller.dart';
 import 'package:cardinal_quotes_app/home/quotes/save_backends/controller/post_save_controller.dart';
-import 'package:cardinal_quotes_app/rootF/home_view.dart';
 import 'package:cardinal_quotes_app/rootF/my_app.dart';
 import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
